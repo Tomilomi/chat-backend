@@ -1,0 +1,24 @@
+{
+  "name": "chat-react-backend",
+  "version": "1.0.0",
+  "description": "A realtime chat application backend using Node.js, Express, and Sequelize",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "dev": "node --watch app.js"
+  },
+  "keywords": [],
+  "author": "Tomilomi",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "dotenv": "^16.5.0",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mssql": "^11.0.1",
+    "multer": "^2.0.0",
+    "sequelize": "^6.37.7"
+  }
+}
