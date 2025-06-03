@@ -4,8 +4,7 @@
 [![Express](https://img.shields.io/badge/Express.js-5.x-blue)](https://expressjs.com/)
 [![Sequelize](https://img.shields.io/badge/Sequelize-6.x-orange)](https://sequelize.org/)
 
-
-This is the backend for a real-time chat application built with **Node.js**, **Express**, **Sequelize**, and **SQL Server**. It supports JWT authentication, image uploads with `multer`, and a layered architecture.
+API for a real-time chat application built with **Node.js**, **Express**, **Sequelize**, and **SQL Server**. It supports JWT authentication, image uploads with `multer`, and a layered architecture.
 
 ## Technologies Used
 
