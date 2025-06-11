@@ -19,13 +19,27 @@ class UserService {
         // return newUser;
     }
 
+    // plain password
+    async login(user_name, user_password) {
+        const user = await userRepository.findByUsername(user_name)
+        if (!user) return null
+
+        const correctPw = await user.validatePassword(plainPw)
+        if (!correctPw) return null
+
+        return {
+            user_name: user.user_name,
+            user_number_pp: user.generate
+        }
+    }
+
     // Get a user by id with their messages and image
     async getFullUserByid(id) {
         return await userRepository.getFullUserById(id)
     }
 
     // Get a user by id with their picture
-    
+
     async getUserWithPicture(id) {
         return await userRepository.getUserWithPicture(id);
     }

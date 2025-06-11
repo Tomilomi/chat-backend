@@ -1,9 +1,34 @@
 import { DataTypes, Model } from 'sequelize';
+import bcrypt from "bcrypt";
+import jwt from "jsonwebtoken"
 import sequelize from '../db/db.js';
 import Picture from './picture.js';
 import Message from './message.js';
 
-class Usuario extends Model { }
+class Usuario extends Model {
+    getName() {
+        return this.user_name
+    }
+
+    getSecureUser() {
+        const { user_id, user_name, user_number_pp } = this;
+        return { user_id, user_name, user_number_pp }
+    }
+
+    async validatePassword(plainPw) {
+        return bcrypt.compare(plainPw, this.user_password)
+    }
+
+    generateJwt() {
+        const payload = {
+            id: this.user_id,
+            user_name: this.user_name,
+            user_number_pp: this.user_name
+        }
+        return jwt.sign(payload, process.env.JWT_SECRET)
+    }
+
+}
 
 Usuario.init({
     user_id: {

@@ -10,24 +10,27 @@ class UserRepository extends BaseRepository {
 
     // Buscar usuario con sus mensajes
     async getUserWithMessages(id) {
-        return await this.model.findByPk(id, {
+        const user = await this.model.findByPk(id, {
             include: [{ model: Message, as: 'messages' }],
         });
+        return user ? user.getSecureUser() : null
     }
 
     // Buscar usuario por nombre de usuario
     async findByUsername(username) {
-        return await this.model.findOne({
+        const user = await this.model.findOne({
             where: { user_name: username },
         });
+        return user ? user.getSecureUser() : null
     }
 
 
     // Buscar usuario con su imagen de perfil
     async getUserWithPicture(id) {
-        return await this.model.findByPk(id, {
+        const user = await this.model.findByPk(id, {
             include: [{ model: Picture, as: 'picture' }],
         });
+        return user ? user.getSecureUser() : null;
     }
 
     // Buscar usuario con todo (mensajes e imagen)
