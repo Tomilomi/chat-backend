@@ -20,7 +20,7 @@ class UserService {
     }
 
     // plain password
-    async login(user_name, user_password) {
+    async login(user_name, plainPw) {
         const user = await userRepository.findByUsername(user_name)
         if (!user) return null
 
