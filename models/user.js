@@ -21,9 +21,7 @@ class Usuario extends Model {
 
     generateJwt() {
         const payload = {
-            id: this.user_id,
-            user_name: this.user_name,
-            user_number_pp: this.user_name
+            id: this.user_id
         }
         return jwt.sign(payload, process.env.JWT_SECRET)
     }
