@@ -7,6 +7,7 @@ import { Server } from "socket.io";
 import { socketHandler } from "./sockets/socket.js"
 import cors from "cors";
 import logger from "morgan";
+import tokenExtractor from './middlewares/tokenExtractor.js';
 
 const app = express();
 const server = http.createServer(app)
@@ -34,7 +35,8 @@ app.use('/api/auth', authRoutes);
 app.use('/api/images', imageRoutes)
 // app.use('/api/users', userRoutes); // cuando lo tengas
 
-
+// Middleware for tokens
+app.use(tokenExtractor)
 
 socketHandler(io);
 
