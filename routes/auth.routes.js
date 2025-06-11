@@ -4,6 +4,10 @@ import UserService from "../services/user.service"
 const router = express.Router();
 const userService = new UserService()
 
+
+
+// Post /auth/login
+
 router.post("/login", async (req, res) => {
   try {
     const { user_name, user_password } = req.body
@@ -25,6 +29,29 @@ router.post("/login", async (req, res) => {
     console.error("Error al obtener imagen:", error)
     res.status(500).json({ error: "Internal server error" })
   }
+
+})
+
+// post /auth/register
+
+router.post("/register", async (req, res) => {
+  try {
+    const { user_name, user_password } = req.body
+
+    const outcome = await userService.login(user_name, user_password)
+
+    if (!outcome) {
+      return res.status(401).json({ error: "Invalid username or password" })
+    }
+
+    res.json(outcome)
+  }
+
+  catch (error) {
+    console.error("Error in login", error)
+    res.status(500).json({ error: "Internal server error" })
+  }
+
 
 })
 
